@@ -34,9 +34,7 @@ $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = \Httpful\Request::get($uri)
     ->Authorization("OAuth ".$access_token)                
     ->addHeader("Content-Type","application/json") 
-	->parseWith(function($body) {
-        return json_decode($body);
-    	})      
+	->autoParse(true)      
     ->send();
 ?>
 
