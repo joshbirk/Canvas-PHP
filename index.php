@@ -31,11 +31,8 @@ $result = json_decode(curl_exec($ch));
 $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = Request::get($uri)
     ->Authorization("OAuth ".$access_token)                // Add in a custom header X-Example-Header
-    ->Content-Type("application/json")       // Sugar: You can also prefix the method with "with"
+    ->addHeader("Content-Type","application/json")       // Sugar: You can also prefix the method with "with"
     ->send();
-
- 
-
 
 ?>
 
