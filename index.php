@@ -1,6 +1,6 @@
 <?php
-error_reporting(-1);
-ini_set("display_errors", 1)
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
 include('httpful-0.2.0.phar');
 
