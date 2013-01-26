@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-require('src/Httpful/Bootstrap.php');
+require('httpful/src/Httpful/Bootstrap.php');
 \Httpful\Bootstrap::init();
 
 $consumer_secret = $_ENV['secret'];
