@@ -35,7 +35,7 @@ $result = \Httpful\Request::get($uri)
     ->Authorization("OAuth ".$access_token)                
     ->addHeader("Content-Type","application/json")       
     ->send();
-echo $result;
+$result = json_decode($result);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
