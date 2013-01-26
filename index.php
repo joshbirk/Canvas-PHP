@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-include('httpful-0.2.0.phar');
+require('httpful/bootstrap.php');
 
 $consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
