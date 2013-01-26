@@ -42,7 +42,7 @@ $result = curl_exec($ch);
 <table>
 	<tr><td>Name</td></tr>
 	<?foreach($result as $account) {
-		echo "<tr><td>".$account['Name']."</td></tr>"		
+		echo $account->Name;		
 	}?>
 </body>
 </html>
