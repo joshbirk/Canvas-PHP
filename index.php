@@ -40,7 +40,7 @@ $result = curl_exec($ch);
 <body>
 <H1>Account List</H1>
 <table>
-	<tr><td>Name</td></tr>
+	<tr><td>Account Name</td></tr>
 	<?foreach($result->records as $account) {
 		echo $account->Name;		
 	}?>
