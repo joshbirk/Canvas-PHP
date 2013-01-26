@@ -9,9 +9,8 @@ $encodedSig = substr($signedRequest, 0, $sep);
 $encodedEnv = substr($signedRequest, $sep + 1);
 
 $calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));
-
 if ($calcedSig != $encodedSig) {
-   echo "Signed request authentication failed, this application must be used via Canvas";
+   echo "Error: Signed Request Failed.  Is the app in Canvas?";
 }
 
 $req = json_decode(base64_decode($encodedEnv));
@@ -19,11 +18,12 @@ $access_token = $req->oauthToken;
 $instance_url = $req->instanceUrl;
 
 $ch = curl_init($instance_url.'/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Authorization:OAuth '.$access_token,
     'Content-Type:application/json'
     ));
-$result = curl_exec($ch);
+$result = json_decode(curl_exec($ch));
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
