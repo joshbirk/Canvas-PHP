@@ -1,7 +1,8 @@
 <?php
-include('httpful-0.2.0.phar');
+error_reporting(E_ALL);
+ini_set("display_errors", 1)
 
-error_reporting(-1);
+include('httpful-0.2.0.phar');
 
 $consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
@@ -30,8 +31,8 @@ $result = json_decode(curl_exec($ch));
 
 $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = Request::get($uri)
-    ->Authorization("OAuth ".$access_token)                // Add in a custom header X-Example-Header
-    ->addHeader("Content-Type","application/json")       // Sugar: You can also prefix the method with "with"
+    ->Authorization("OAuth ".$access_token)                
+    ->addHeader("Content-Type","application/json")       
     ->send();
 
 ?>
