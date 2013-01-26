@@ -42,7 +42,7 @@ $result = json_decode(curl_exec($ch));
 <table>
 	<tr><td>Account Name</td></tr>
 	<?foreach($result->records as $account) {
-		echo $account->Name;		
+		echo "<tr><td>".$account->Name."</td></tr>";		
 	}?>
 </body>
 </html>
