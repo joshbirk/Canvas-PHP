@@ -1,4 +1,6 @@
 <?php
+include('httpful-0.2.0.phar');
+
 error_reporting(-1);
 
 $consumer_secret = $_ENV['secret'];
@@ -16,7 +18,7 @@ if ($calcedSig != $encodedSig) {
 $req = json_decode(base64_decode($encodedEnv));
 $access_token = $req->oauthToken;
 $instance_url = $req->instanceUrl;
-
+/*
 $ch = curl_init($instance_url.'/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -24,6 +26,17 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type:application/json'
     ));
 $result = json_decode(curl_exec($ch));
+*/
+
+$uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
+$result = Request::get($uri)
+    ->Authorization("OAuth ".$access_token)                // Add in a custom header X-Example-Header
+    ->Content-Type("application/json")       // Sugar: You can also prefix the method with "with"
+    ->send();
+
+ 
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
