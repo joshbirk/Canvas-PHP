@@ -34,7 +34,7 @@ $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = \Httpful\Request::get($uri)
     ->Authorization("OAuth ".$access_token)                
     ->addHeader("Content-Type","application/json") 
-	->expectsType('application/json')   
+	->expectsJson()
     ->send();
 ?>
 
