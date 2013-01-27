@@ -36,6 +36,7 @@ $result = \Httpful\Request::get($uri)
     ->addHeader("Content-Type","application/json") 
 	->expectsJson()
     ->send();
+$result = json_decode($result);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
