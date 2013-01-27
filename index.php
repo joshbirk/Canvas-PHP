@@ -27,10 +27,6 @@ $result = \Httpful\Request::get($uri)
     ->addHeader("Content-Type","application/json") 
 	->expectsType(\Httpful\Mime::JSON)
     ->send();
-
-
-
-$get_template = 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
