@@ -25,8 +25,9 @@ $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = \Httpful\Request::get($uri)
     ->Authorization("OAuth ".$access_token)                
     ->addHeader("Content-Type","application/json") 
-	->expectsType(\Httpful\Mime::JSON)
     ->send();
+$result = json_decode($result); //auto-parsing doesn't seem to work
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -37,7 +38,6 @@ $result = \Httpful\Request::get($uri)
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Account List</title>
 
-	<!-- Date: 2013-01-26 -->
 </head>
 <body>
 <H1>Account List</H1>
