@@ -10,3 +10,5 @@ index.php provides and example of that.
 Or, if you want to keep the callbacks in PHP (perhaps for tighter integration with existing code), you can use a library like httpful to easily make REST callouts.  Normally httpful is distributed via a phar, but is included here as Heroku (which is optional to use with Canvas) does not support phar's normally.
 
 index-httpful.php is an example of that.
+
+<B>Note:</B> This is using/includes v26 of the Canvas SDK.  An upgrade to the latest, v27, will happen with Spring '13 is full released.
