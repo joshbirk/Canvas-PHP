@@ -4,19 +4,15 @@ ini_set("display_errors", 1);
 
 $consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
+if ($signedRequest == null) {
+   echo "Error: Signed Request Failed.  Is the app in Canvas?";
+}
 
 $sep = strpos($signedRequest, '.');
 $encodedSig = substr($signedRequest, 0, $sep);
 $encodedEnv = substr($signedRequest, $sep + 1);
 
-$calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));
-
-if ($calcedSig != $encodedSig) {
-   echo "Signed request authentication failed, this application must be used via Canvas";
-}
-
 $sr = base64_decode($encodedEnv);
-$uri = "/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 ?>
 
 <script src='scripts/jquery-1.5.1.js'></script>
@@ -28,7 +24,7 @@ $uri = "/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 <script type="text/javascript" src="/scripts/json2.js"></script>
 <script src='scripts/ICanHaz.js'></script>
 <script>
-        var url = "<?=$uri?>";
+        var url = "/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 		var sr = JSON.parse('<?=$sr?>');
 		
         $(document).ready(function() {
