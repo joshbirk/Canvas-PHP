@@ -16,7 +16,7 @@ if ($calcedSig != $encodedSig) {
 }
 
 $sr = base64_decode($encodedEnv);
-$uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
+$uri = "/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 ?>
 
 <script src='scripts/jquery-1.5.1.js'></script>
