@@ -18,8 +18,8 @@ if ($calcedSig != $encodedSig) {
 }
 
 $req = json_decode(base64_decode($encodedEnv));
-$access_token = $req->oauthToken;
-$instance_url = $req->instanceUrl;
+$access_token = $req->client->oauthToken;
+$instance_url = $req->client->instanceUrl;
 
 $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT";
 $result = \Httpful\Request::get($uri)

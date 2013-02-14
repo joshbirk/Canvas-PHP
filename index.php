@@ -16,9 +16,6 @@ if ($calcedSig != $encodedSig) {
 }
 
 $sr = base64_decode($encodedEnv);
-$req = json_decode($sr);
-$access_token = $req->oauthToken;
-$instance_url = $req->instanceUrl;
 $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 ?>
 
@@ -38,7 +35,7 @@ $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 		console.debug(sr);
 		$('#user-name').html(sr.context.user.fullName);
         Sfdc.canvas.client.ajax(url,
-            {	token : sr.oauthToken,
+            {	client : sr.client,
                 method: 'GET',
                 contentType: "application/json",
                 success : function(data) {
