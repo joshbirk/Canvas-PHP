@@ -49,7 +49,7 @@ Hello, <span id='user-name'></span>
 	<tr><td><strong>Recent Accounts</strong></td></tr>
     <script type="text/html" id="accounts">
 			{{#records}}
-            <tr><td><a href="<?=$instance_url?>/{{Id}}" target="_new">{{Name}}</a></td></tr> 
+            <tr><td>{{Name}}</td></tr> 
    			{{/records}}
     </script>
 </table>
