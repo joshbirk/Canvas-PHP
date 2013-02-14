@@ -44,5 +44,6 @@ $result = json_decode($result); //auto-parsing doesn't seem to work
 	<?foreach($result->records as $account) {
 		echo "<tr><td>".$account->Name."</td></tr>";		
 	}?>
+	</table>
 </body>
 </html>
