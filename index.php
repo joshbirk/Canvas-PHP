@@ -47,7 +47,7 @@ $uri = $instance_url."/services/data/v26.0/query?q=SELECT+ID,NAME+FROM+ACCOUNT"
 		});
 </script>
 
-</script>"<?=$consumer_secret?>
+</script>
 Hello, <span id='user-name'></span>
 <table id="accountTable">
 	<tr><td><strong>Recent Accounts</strong></td></tr>
