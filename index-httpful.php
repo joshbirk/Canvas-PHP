@@ -5,7 +5,6 @@ ini_set("display_errors", 1);
 require('httpful/src/Httpful/Bootstrap.php');
 \Httpful\Bootstrap::init();
 
-$consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
 if ($signedRequest == null) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";

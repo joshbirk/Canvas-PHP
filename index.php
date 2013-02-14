@@ -1,8 +1,6 @@
 <?php
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
-
-$consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
 if ($signedRequest == null) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";
