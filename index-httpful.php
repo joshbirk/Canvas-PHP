@@ -7,15 +7,13 @@ require('httpful/src/Httpful/Bootstrap.php');
 
 $consumer_secret = $_ENV['secret'];
 $signedRequest = $_REQUEST['signed_request'];
+if ($signedRequest == null) {
+   echo "Error: Signed Request Failed.  Is the app in Canvas?";
+}
 
 $sep = strpos($signedRequest, '.');
 $encodedSig = substr($signedRequest, 0, $sep);
 $encodedEnv = substr($signedRequest, $sep + 1);
-
-$calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));
-if ($calcedSig != $encodedSig) {
-   echo "Error: Signed Request Failed.  Is the app in Canvas?";
-}
 
 $req = json_decode(base64_decode($encodedEnv));
 $access_token = $req->client->oauthToken;
