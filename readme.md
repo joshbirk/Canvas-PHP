@@ -12,4 +12,9 @@ Or, if you want to keep the callbacks in PHP (perhaps for tighter integration wi
 index-httpful.php is an example of that.
 
 <h1>Note</h1>
-This is using/includes v26 of the Canvas SDK.  An upgrade to the latest, v27, will happen with Spring '13 is fully released.
+Updated to Spring '13.
+
+If you want to try these apps in your Canvas, here are the installation links:
+
+https://login.salesforce.com/services/forceconnectedapps/josh2013/Josh
+https://login.salesforce.com/services/forceconnectedapps/josh2013/Josh2
