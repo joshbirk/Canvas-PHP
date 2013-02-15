@@ -12,7 +12,7 @@ require('httpful/src/Httpful/Bootstrap.php');
 //In Canvas via SignedRequest/POST, the authentication should be passed via the signed_request header
 //You can also use OAuth/GET based flows
 $signedRequest = $_REQUEST['signed_request'];
-$consumer_secret = $_ENV['secret'];
+$consumer_secret = $_ENV['consumer_secret'];
 if ($signedRequest == null || $consumer_secret == null) {
    echo "Error: Signed Request or Consumer Secret not found";
 }
@@ -21,7 +21,6 @@ if ($signedRequest == null || $consumer_secret == null) {
 $sep = strpos($signedRequest, '.');
 $encodedSig = substr($signedRequest, 0, $sep);
 $encodedEnv = substr($signedRequest, $sep + 1);
-
 $calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));	  
 if ($calcedSig != $encodedSig) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";
