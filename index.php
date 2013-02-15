@@ -7,6 +7,12 @@ ini_set("display_errors", 1);
 //You can also use OAuth/GET based flows
 $signedRequest = $_REQUEST['signed_request'];
 $consumer_secret = $_ENV['secret'];
+
+//decode the signedRequest
+$sep = strpos($signedRequest, '.');
+$encodedSig = substr($signedRequest, 0, $sep);
+$encodedEnv = substr($signedRequest, $sep + 1);
+
 if ($signedRequest == null || $consumer_secret == null) {
    echo "Error: Signed Request or Consumer Secret not found";
 }
@@ -16,10 +22,7 @@ if ($calcedSig != $encodedSig) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";
 }
 
-//decode the signedRequest
-$sep = strpos($signedRequest, '.');
-$encodedSig = substr($signedRequest, 0, $sep);
-$encodedEnv = substr($signedRequest, $sep + 1);
+
 
 //decode the signed request object
 $sr = base64_decode($encodedEnv);

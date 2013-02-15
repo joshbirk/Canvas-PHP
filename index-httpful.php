@@ -17,6 +17,11 @@ if ($signedRequest == null || $consumer_secret == null) {
    echo "Error: Signed Request or Consumer Secret not found";
 }
 
+//decode the signedRequest
+$sep = strpos($signedRequest, '.');
+$encodedSig = substr($signedRequest, 0, $sep);
+$encodedEnv = substr($signedRequest, $sep + 1);
+
 $calcedSig = base64_encode(hash_hmac("sha256", $encodedEnv, $consumer_secret, true));	  
 if ($calcedSig != $encodedSig) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";
