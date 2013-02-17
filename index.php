@@ -21,8 +21,6 @@ if ($calcedSig != $encodedSig) {
    echo "Error: Signed Request Failed.  Is the app in Canvas?";
 }
 
-
-
 //decode the signed request object
 $sr = base64_decode($encodedEnv);
 ?>
