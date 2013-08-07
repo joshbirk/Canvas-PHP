@@ -18,3 +18,5 @@ If you want to try these apps in your Canvas, here are the installation links:
 
 https://login.salesforce.com/services/forceconnectedapps/josh2013/Josh
 https://login.salesforce.com/services/forceconnectedapps/josh2013/Josh2
+
+<b>Note:</b> As of recently, you'll need to modify the app permissions to *admin configured users* instead of all users.  You can then add the appropriate profiles to the app for use.
